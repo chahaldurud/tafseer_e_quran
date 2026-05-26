@@ -1,0 +1,31 @@
+/* ======================================================
+   SEARCH PAGE SPECIFIC STYLES
+   ====================================================== */
+.search-status {
+    padding: 25px 20px 10px 20px;
+}
+
+.search-title-main {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+
+.search-title-main span {
+    font-weight: 900;
+    font-style: italic;
+    color: var(--text-main);
+}
+
+.search-title-sub {
+    font-size: 0.95rem;
+    color: var(--red);
+    line-height: 1.5;
+}
+
+/* On mobile, make text slightly smaller */
+@media (max-width: 600px) {
+    .search-title-main { font-size: 1.1rem; }
+    .search-title-sub { font-size: 0.85rem; }
+}

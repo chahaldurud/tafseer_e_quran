@@ -1,0 +1,209 @@
+/* ======================================================
+   VARIABLES (Matching Main App Theme)
+   ====================================================== */
+:root { 
+    --bg-dark: #1e1e1e; 
+    --bg-panel: #2a2a2a; 
+    --red: #f25454; 
+    --text-main: #ffffff; 
+    --text-muted: #aaaaaa; 
+    --border: #444444; 
+}
+
+/* ======================================================
+   BASE STYLES
+   ====================================================== */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body { 
+    background-color: var(--bg-dark); 
+    color: var(--text-main); 
+    overflow-x: hidden; 
+}
+
+/* ======================================================
+   HEADER
+   ====================================================== */
+.settings-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px 30px; 
+    background: var(--bg-dark); 
+    border-bottom: 1px solid var(--border); 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+}
+
+.header-icon { 
+    width: 28px; 
+    filter: invert(1); 
+}
+
+.settings-header h1 { 
+    font-style: italic; 
+    font-size: 1.6rem; 
+    letter-spacing: 1px;
+}
+
+.close-btn { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 10px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.close-btn img { 
+    width: 24px; 
+    filter: invert(1); 
+}
+
+/* ======================================================
+   MAIN CONTENT & CARDS
+   ====================================================== */
+.settings-main {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.settings-container {
+    width: 100%;
+    max-width: 800px; /* Limits width on large PC screens */
+}
+
+.section-title {
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+}
+
+.setting-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.setting-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.setting-card.disabled {
+    opacity: 0.6;
+    pointer-events: none; /* Prevents hover effects on disabled items */
+}
+
+.setting-info label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+.setting-info p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.setting-value {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--text-main);
+    background: rgba(255,255,255,0.1);
+    padding: 8px 15px;
+    border-radius: 8px;
+    letter-spacing: 1px;
+}
+
+
+/* ======================================================
+   RESPONSIVE MEDIA QUERIES
+   ====================================================== */
+
+/* ----- TABLETS (PORTRAIT) (601px to 900px) ----- */
+@media (max-width: 900px) {
+    .settings-main {
+        padding: 30px 20px;
+    }
+}
+
+/* ----- MOBILE PHONES (max-width: 600px) ----- */
+@media (max-width: 600px) {
+    .settings-header { 
+        padding: 15px 20px; 
+    }
+    
+    .settings-header h1 { 
+        font-size: 1.3rem; 
+    }
+    
+    .header-icon {
+        width: 24px;
+    }
+
+    .settings-main {
+        padding: 20px 15px;
+    }
+
+    /* Make cards fit edge-to-edge nicely on phones */
+    .setting-card {
+        padding: 15px 20px;
+        border-radius: 10px;
+    }
+
+    .setting-info label {
+        font-size: 1.1rem;
+    }
+
+    .setting-info p {
+        font-size: 0.8rem;
+    }
+
+    .setting-value {
+        font-size: 1rem;
+        padding: 6px 12px;
+    }
+}
+
+/* ----- TINY PHONES (e.g. iPhone SE) (max-width: 400px) ----- */
+@media (max-width: 400px) {
+    /* Stack the card vertically on very small screens */
+    .setting-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .setting-value {
+        align-self: flex-start; /* Aligns the pill to the left under the text */
+    }
+}

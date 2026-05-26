@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tafseer E Quran</title>
+    <link rel="icon" type="image/png" href="icons/favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo-text">TAFSEER</div>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="SEARCH........">
+            <img src="icons/search.svg" alt="Search" onclick="toggleSearch(event)">
+        </div>
+        <div class="header-icons">
+            <a href="setting.html"><img src="icons/setting.svg" alt="Settings"></a>
+        </div>
+    </header>
+
+    <nav class="tabs" id="main-tabs">
+        <button type="button" class="tab-btn active" onclick="switchTab('HOME', this)">HOME</button>
+        <button type="button" class="tab-btn" onclick="switchTab('PLACE', this)">PLACE</button>
+        <button type="button" class="tab-btn" onclick="switchTab('TYPE', this)">TYPE</button>
+    </nav>
+
+    <main id="app-content">
+        <div id="home-view" class="grid-container"></div>
+        <div id="list-view" class="list-container hidden"></div>
+        <div id="playlist-detail-view" class="list-container hidden">
+            <div class="player-header" style="padding: 0 0 15px 0; border-bottom: none;">
+                <img src="icons/back.svg" alt="Back" onclick="closePlaylistView()">
+                <h2 id="playlist-header-title" style="font-style: italic; text-transform: uppercase;">CATEGORY</h2>
+            </div>
+            <div id="playlist-items" style="display: flex; flex-direction: column; gap: 15px;"></div>
+        </div>
+    </main>
+
+    <div id="player-view">
+        <div class="player-header">
+            <img src="icons/back.svg" alt="Back" onclick="closePlayer()">
+            <h2><span id="header-title-text">TITLE</span> is PLAYING</h2>
+        </div>
+        
+        <div class="player-layout">
+            <div class="video-section">
+                <div class="video-container" id="video-container" onclick="togglePlayerUI(event)">
+                    <!-- SAFTEY FIX: Removed src="" -->
+                    <img id="player-bg" class="video-bg">
+                    <div id="player-spinner" class="spinner hidden"></div>
+                    
+                    <div id="player-ui" class="player-ui-layer">
+                        <div class="overlay-controls">
+                            <!-- SAFTEY FIX: Added type="button" to prevent form refresh -->
+                            <button type="button" id="skip-back" onclick="skip(-10, event)">
+                                <img src="icons/backward.svg" alt="-10s"><br><small>10S</small>
+                            </button>
+                            <button type="button" onclick="togglePlay(event)">
+                                <img id="main-play-icon" src="icons/pause.svg" style="width:60px; transition: width 0.3s ease;">
+                            </button>
+                            <button type="button" id="skip-forward" onclick="skip(10, event)">
+                                <img src="icons/forward.svg" alt="+10s"><br><small>10S</small>
+                            </button>
+                        </div>
+                        <div class="progress-area" onclick="event.stopPropagation()">
+                            <span id="curr-time" style="font-size: 0.8rem; font-weight: bold;">00:00</span>
+                            <input type="range" id="progress-bar" value="0" min="0" max="100">
+                            <span id="total-time" style="font-size: 0.8rem; font-weight: bold;">00:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-details">
+                    <h1 id="player-title">TITLE</h1>
+                    <h3 id="player-place" style="font-size: 0.9rem; font-style: italic; color: var(--text-muted); text-transform: uppercase;">PLACE</h3>
+                </div>
+            </div>
+
+            <div class="next-section">
+                <h3>NEXT :</h3>
+                <div id="next-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mini-player">
+        <div style="display: flex; align-items: center; flex-grow: 1; cursor: pointer; overflow: hidden;" onclick="openPlayer()">
+            <!-- SAFTEY FIX: Removed src="" -->
+            <img id="mini-thumb" class="mini-thumb">
+            <div class="mini-info">
+                <p id="mini-title">TITLE</p>
+                <span id="mini-duration">00:00</span>
+            </div>
+        </div>
+        <div class="mini-actions">
+            <!-- SAFTEY FIX: Added type="button" -->
+            <button type="button" onclick="togglePlay(event)"><img id="mini-play-icon" src="icons/pause.svg"></button>
+            <button type="button" onclick="closeMiniPlayer()"><img src="icons/close.svg"></button>
+        </div>
+    </div>
+
+    <!-- SCRIPT ORDER IS IMPORTANT -->
+    <script src="tracker.js"></script>
+    <script src="algorithms.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
