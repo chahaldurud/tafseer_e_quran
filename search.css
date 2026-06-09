@@ -4,7 +4,9 @@
 .search-status {
     padding: 25px 20px 10px 20px;
 }
-
+.grid-container{
+    margin-top: 0px;
+}
 .search-title-main {
     font-size: 1.3rem;
     font-weight: 500;
@@ -20,7 +22,7 @@
 }
 
 .search-title-sub {
-    margin-top:20px;
+    margin-top: 20px;
     font-size: 0.95rem;
     color: var(--red);
     line-height: 1.5;
