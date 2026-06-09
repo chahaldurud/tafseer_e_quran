@@ -19,6 +19,7 @@
 }
 
 .search-title-sub {
+    margin-top:20px;
     font-size: 0.95rem;
     color: var(--red);
     line-height: 1.5;
