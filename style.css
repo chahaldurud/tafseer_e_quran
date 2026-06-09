@@ -9,6 +9,11 @@
     --text-muted: #cccccc;
     --border: #444444;
 }
+header{
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+}
 
 * {
     box-sizing: border-box;
